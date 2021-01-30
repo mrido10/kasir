@@ -1,38 +1,45 @@
-.App {
-  text-align: center;
+body {
+    position: relative;
+    line-height: 1;
+    margin: 0;
+    top: 0;
+    left: 0;
+    background-color: #F0F4F3;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+    font-family: 'Montserrat';
+    src: url(./assets/font/Montserrat-Regular.ttf),
+        url(./assets/font/Montserrat-SemiBold.ttf),
+        url(./assets/font/Montserrat-SemiBoldItalic.ttf),
+        url(./assets/font/Montserrat-Thin.ttf),
+        url(./assets/font/Montserrat-ThinItalic.ttf), 
+        url(./assets/font/Montserrat-Black.ttf),
+        url(./assets/font/Montserrat-BlackItalic.ttf),
+        url(./assets/font/Montserrat-Bold.ttf),
+        url(./assets/font/Montserrat-BoldItalic.ttf),
+        url(./assets/font/Montserrat-ExtraBold.ttf),
+        url(./assets/font/Montserrat-ExtraBoldItalic.ttf),
+        url(./assets/font/Montserrat-ExtraLight.ttf),
+        url(./assets/font/Montserrat-ExtraLightItalic.ttf),
+        url(./assets/font/Montserrat-Light.ttf),
+        url(./assets/font/Montserrat-Italic.ttf),
+        url(./assets/font/Montserrat-LightItalic.ttf),
+        url(./assets/font/Montserrat-Medium.ttf),
+        url(./assets/font/Montserrat-MediumItalic.ttf),  
 }

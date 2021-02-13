@@ -40,14 +40,14 @@ class RegisterComponent extends Component {
             } else if (activeElement === this.state.password.classList[1]) {
                 this.state.rePassword.focus()
             } else if (activeElement === this.state.rePassword.classList[1]) {
-                
+                this.handleSubmit()
             }
         }
     }
 
     onFocusOnBlur = (e) => {
         let activeElement = e.target.classList[1]
-        let placeholder = document.getElementsByClassName('placeholder')
+        let placeholder = this.state.placeholder
         let onName = e._reactName
         let str = [
             'First Name',
@@ -74,28 +74,34 @@ class RegisterComponent extends Component {
         }
         
         if (activeElement === this.state.firstName.classList[1]) {
-            if (onName === 'onBlur' && this.state.firstName.value.trim() !== '') return
-            this.state.placeholder[0].innerHTML = str[0]
+            if ((onName === 'onBlur' && this.state.firstName.value.trim() !== '') || 
+                (onName === 'onFocus' && this.state.firstName.value.trim() !== '')) return
+            placeholder[0].innerHTML = str[0]
             this.animation(placeholder, 0, onName, style)
         } else if (activeElement === this.state.lastName.classList[1]) {
-            if (onName === 'onBlur' && this.state.lastName.value.trim() !== '') return
-            this.state.placeholder[1].innerHTML = str[1]
+            if ((onName === 'onBlur' && this.state.lastName.value.trim() !== '') || 
+                (onName === 'onFocus' && this.state.lastName.value.trim() !== '')) return
+            placeholder[1].innerHTML = str[1]
             this.animation(placeholder, 1, onName, style)
         } else if (activeElement === this.state.email.classList[1]) {
-            if (onName === 'onBlur' && this.state.email.value.trim() !== '') return
-            this.state.placeholder[2].innerHTML = str[2]
+            if ((onName === 'onBlur' && this.state.email.value.trim() !== '') ||
+                (onName === 'onFocus' && this.state.email.value.trim() !== '')) return
+            placeholder[2].innerHTML = str[2]
             this.animation(placeholder, 2, onName, style)
         } else if (activeElement === this.state.phone.classList[1]) {
-            if (onName === 'onBlur' && this.state.phone.value.trim() !== '') return
-            this.state.placeholder[3].innerHTML = str[3]
+            if ((onName === 'onBlur' && this.state.phone.value.trim() !== '') || 
+                (onName === 'onFocus' && this.state.phone.value.trim() !== '')) return
+            placeholder[3].innerHTML = str[3]
             this.animation(placeholder, 3, onName, style)
         } else if (activeElement === this.state.password.classList[1]) {
-            if (onName === 'onBlur' && this.state.password.value.trim() !== '') return
-            this.state.placeholder[4].innerHTML = str[4]
+            if ((onName === 'onBlur' && this.state.password.value.trim() !== '') ||
+                (onName === 'onFocus' && this.state.password.value.trim() !== '')) return
+            placeholder[4].innerHTML = str[4]
             this.animation(placeholder, 4, onName, style)
         } else if (activeElement === this.state.rePassword.classList[1]) {
-            if (onName === 'onBlur' && this.state.rePassword.value.trim() !== '') return
-            this.state.placeholder[5].innerHTML = str[5]
+            if ((onName === 'onBlur' && this.state.rePassword.value.trim() !== '') ||
+                (onName === 'onFocus' && this.state.rePassword.value.trim() !== '')) return
+            placeholder[5].innerHTML = str[5]
             this.animation(placeholder, 5, onName, style)
         }
     }
@@ -129,34 +135,35 @@ class RegisterComponent extends Component {
 
     handleSubmit = () => {
         let submit = true
+        let placeholder = this.state.placeholder
         if (this.state.firstName.value.trim() === '') {
-            this.state.placeholder[0].innerHTML = '* First Name'
-            this.state.placeholder[0].style.color = '#ff8080'
+            placeholder[0].innerHTML = '* First Name'
+            placeholder[0].style.color = '#ff8080'
             submit = false
         }
         if (this.state.lastName.value.trim() === '') {
-            this.state.placeholder[1].innerHTML = '* Last Name'
-            this.state.placeholder[1].style.color = '#ff8080'
+            placeholder[1].innerHTML = '* Last Name'
+            placeholder[1].style.color = '#ff8080'
             submit = false
         }
         if (this.state.email.value.trim() === '') {
-            this.state.placeholder[2].innerHTML = '* Email'
-            this.state.placeholder[2].style.color = '#ff8080'
+            placeholder[2].innerHTML = '* Email'
+            placeholder[2].style.color = '#ff8080'
             submit = false
         }
         if (this.state.phone.value.trim() === '') {
-            this.state.placeholder[3].innerHTML = '* Phone'
-            this.state.placeholder[3].style.color = '#ff8080'
+            placeholder[3].innerHTML = '* Phone'
+            placeholder[3].style.color = '#ff8080'
             submit = false
         }
         if (this.state.password.value.trim() === '') {
-            this.state.placeholder[4].innerHTML = '* Password'
-            this.state.placeholder[4].style.color = '#ff8080'
+            placeholder[4].innerHTML = '* Password'
+            placeholder[4].style.color = '#ff8080'
             submit = false
         }
         if (this.state.rePassword.value.trim() === '') {
-            this.state.placeholder[5].innerHTML = '* Re-type Password'
-            this.state.placeholder[5].style.color = '#ff8080'
+            placeholder[5].innerHTML = '* Re-type Password'
+            placeholder[5].style.color = '#ff8080'
             submit = false
         }
 
@@ -171,6 +178,16 @@ class RegisterComponent extends Component {
 
     render() { 
         return (
+            <>
+            <div id='doLogin' >
+                <div className='headerBox'>
+                    <div className='title'>Have Account?</div>
+                    <div className='detail'>Login with your personal info</div>
+                </div>
+                <div className='contentBox'>
+                    <button className='moveItem' type='button' onClick={this.props.move}>Sign In</button>
+                </div>
+            </div>
             <div id='registerBox'>
                 <div className='title'><h1>Create Your Account</h1></div>
                 <div className='inputBox'>
@@ -221,6 +238,7 @@ class RegisterComponent extends Component {
                     </div>
                 </div>
             </div>
+            </>
         )
     }
 }

@@ -45,6 +45,9 @@
     color: #fff;
     text-align: center;
 }
+.headerBox .title.doReg {
+    font-size: 16px;
+}
 
 .headerBox .detail {
     font-family: 'Montserrat';

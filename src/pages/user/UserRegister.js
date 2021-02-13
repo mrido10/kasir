@@ -9,39 +9,24 @@ class UserRegister extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            showLogin: false,
-            showRegister: true
+            showComponent: false
         }
+        this.handleShow = this.handleShow.bind(this)
     }
 
-
-    componentDidMount() {
-
+    handleShow = () => {
+        this.setState({
+            showComponent: !this.state.showComponent
+        }, () => {
+            console.log('login', this.state.showComponent, '  |  register', !this.state.showComponent)
+        })
     }
 
     render() { 
         return (
-            <>
             <div id='userBox' className='userBox'>
-                {/* <div id='doRegister'>
-                    <div className='headerBox'></div>
-                    <div className='contentBox'>
-                        <button className='moveItem' type='button' onClick={() => {this.setState({showLogin: true, showRegister: false})}}>Sign Up</button>
-                    </div>
-                </div> */}
-                { this.state.showLogin ? <LoginComponent /> : null }
-                <div id='doLogin'>
-                    <div className='headerBox'>
-                        <div className='title'>Have Account?</div>
-                        <div className='detail'>Login with your personal info</div>
-                    </div>
-                    <div className='contentBox'>
-                        <button className='moveItem' type='button' onClick={() => {this.setState({showLogin: true, showRegister: false})}}>Sign In</button>
-                    </div>
-                </div>
-                { this.state.showRegister ? <RegisterComponent /> : null }
+                {this.state.showComponent ? <LoginComponent move={this.handleShow} /> : <RegisterComponent move={this.handleShow} />}
             </div>
-            </>
         )
     }
 }
